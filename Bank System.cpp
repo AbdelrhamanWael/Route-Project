@@ -1,104 +1,84 @@
 #include <iostream>
 using namespace std;
-class Client
+
+class Employee
 {
 private:
-    string name, password;
     int id;
-    double balance;
+    string name;
+    string password;
+    double salary;
 
 public:
-    Client()
-    {
-        name = "";
-    }
-    Client(string name, string password, int id, double balance) : name(name), password(password), id(id), balance(balance) {}
+    Employee() {}
+    Employee(int id, string name, string password, double salary) : id(id) name(name) password(password) salary(salary) {}
     // getter
-    double getBalance()
+    double getSalary()
     {
-        return balance;
+        return salary;
     }
-
-    string getName()
-    {
-        return name;
-    }
-
     int getId()
     {
         return id;
     }
-
+    string getName()
+    {
+        return name;
+    }
     string getPassword()
     {
         return password;
     }
     // setter
-    void setBalance(double balance)
+    void setSalary(double salary)
     {
-        this->balance = balance;
-    }
-
-    void setName(string name)
-    {
-        this->name = name;
-    }
-
-    void setId(int id)
-    {
-
-        this->id = id;
-    }
-
-    void setPassword(string password)
-    {
-        this->password = password;
-    }
-
-    // login_function
-    bool login(string name, string password)
-    {
-        if (name == this->name && password == this->password)
+        if (salary < 5000)
         {
-            return true;
+            cout << "Salary must be greater than 5000" << endl;
         }
         else
         {
-            return false;
+            this->salary = salary;
         }
     }
-
-    // deposit
-    void deposit(double amount)
+    void setId(int id)
     {
-        balance += amount;
+        this->id = id;
     }
-
-    // withdraw
-    void withdraw(double amount)
+    void setName(string name)
     {
-        balance -= amount;
+        if (name.length() < 5 || name.length() > 20)
+        {
+            cout << "Name must be between 8 and 20 characters" << endl;
+        }
+        else
+        {
+            this->name = name;
+        }
     }
-
-    // transfer
-    void transfer(Client &c, double amount)
+    void setPassword(string password)
     {
-        balance -= amount;
-        c.balance += amount;
+        if (password.length() < 8 || password.length() > 20)
+        {
+            cout << "Password must be between 8 and 20 characters" << endl;
+        }
+        else
+        {
+            this->password = password;
+        }
     }
-
     // display
     void display()
     {
         cout << "Name: " << name << endl;
         cout << "ID: " << id << endl;
-        cout << "Balance: " << balance << endl;
     }
+};
 
-}
-
-int
-main()
+int main()
 {
-    Client c;
+    Employee e;
+    e.display();
+
+    return 0;
 }
