@@ -44,6 +44,7 @@ public:
         if (balance < 1500)
         {
             cout << "the minimum of balance is 1500 !";
+        
             return;
         }
         else
@@ -87,27 +88,34 @@ public:
     }
     void setPassword(string password)
     {
-        if (password.length() < 5 || password.length() > 20)
+        while (true)
         {
-            cout << "the password must be between 5 to 20 latter !" << endl;
-            return;
-        }
-        else
-        {
-            this->password = password;
-            cout << "done";
+            if (password.length() < 8 || password.length() > 20)
+            {
+                cout << "password min size 8. Please enter a valid password: ";
+                cin >> password;
+            }
+            else
+            {
+                this->password = password;
+                break;
+            }
         }
     }
     void setBalance(double balance)
     {
-        if (balance < 1500)
+        while (true)
         {
-            cout << "the minimum of balance is 1500 !";
-            return;
-        }
-        else
-        {
-            this->balance = balance;
+            if (balance < 1500)
+            {
+                cout << "balance must be greater than 1500. Please enter a valid balance: ";
+                cin >> balance;
+            }
+            else
+            {
+                this->balance = balance;
+                break;
+            }
         }
     }
     void setId(int id)
@@ -218,39 +226,61 @@ public:
     // setters
     void setSalary(double salary)
     {
-        if (salary < 5000)
+
+        while (true)
         {
-            cout << "Salary must be greater than 5000" << endl;
-        }
-        else
-        {
-            this->salary = salary;
+            if (salary < 5000)
+            {
+                cout << "Salary must be greater than 5000. Please enter a valid salary: ";
+                cin >> salary;
+            }
+            else
+            {
+                this->salary = salary;
+                break; 
+            }
         }
     }
+
     void setId(int id)
     {
         this->id = id;
     }
     void setName(string name)
     {
-        if (name.length() < 5 || name.length() > 20)
+        while (true)
         {
-            cout << "Name must be between 8 and 20 characters" << endl;
+            if (name.length() < 5 || name.length() > 20)
+            {
+                cout << "name min size 5. Please enter a valid name: ";
+                cin >> name;
+            }
+            else
+            {
+                this->name = name;
+                break;
+            }
         }
-        else
-        {
-            this->name = name;
-        }
+
+        
     }
     void setPassword(string password)
     {
-        if (password.length() < 8 || password.length() > 20)
+
+        while (true)
         {
-            cout << "Password must be between 8 and 20 characters" << endl;
-        }
-        else
-        {
-            this->password = password;
+            cout << "Please enter a password: ";
+            cin >> password;
+
+            if (password.length() < 8 || password.length() > 20)
+            {
+                cout << "password min size 8. Please enter a valid password: ";
+            }
+            else
+            {
+                this->password = password;
+                break;
+            }
         }
     }
 
@@ -259,6 +289,7 @@ public:
     {
         cout << "Name: " << name << endl;
         cout << "ID: " << id << endl;
+        cout << "Password: " << password << endl;
         cout << "Salary: " << salary << endl;
         cout << "------------------------------------" << endl;
     }
@@ -298,39 +329,55 @@ class Admin : public Person {
         // setters
         void setBalance(double balance)
         {
-            if (balance < 5000)
+
+            while (true)
             {
-                cout << "balance must be greater than 5000" << endl;
-            }
-            else
-            {
-                this->balance = balance;
+                if (balance < 5000)
+                {
+                    cout << "balance must be greater than 5000. Please enter a valid balance: ";
+                    cin >> balance;
+                }
+                else
+                {
+                    this->balance = balance;
+                    break;
+                }
             }
         }
         void setId(int id)
         {
             this->id = id;
         }
-        void setName(string name)
+        vvoid setName(string name)
         {
-            if (name.length() < 5 || name.length() > 20)
+            while (true)
             {
-                cout << "Name must be between 8 and 20 characters" << endl;
-            }
-            else
-            {
-                this->name = name;
+                if (name.length() < 5 || name.length() > 20)
+                {
+                    cout << "name min size 5. Please enter a valid name: ";
+                    cin >> name;
+                }
+                else
+                {
+                    this->name = name;
+                    break;
+                }
             }
         }
         void setPassword(string password)
         {
-            if (password.length() < 8 || password.length() > 20)
+            while (true)
             {
-                cout << "Password must be between 8 and 20 characters" << endl;
-            }
-            else
-            {
-                this->password = password;
+                if (password.length() < 8 || password.length() > 20)
+                {
+                    cout << "password min size 8. Please enter a valid password: ";
+                    cin >> password;
+                }
+                else
+                {
+                    this->password = password;
+                    break;
+                }
             }
         }
 
