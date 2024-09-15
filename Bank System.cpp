@@ -14,11 +14,7 @@ int main()
     cout << "Enter Client Name: ";
     cin >> name;
     c.setName(name);
-    if (name.length() < 5 || name.length() > 20 )
-    {
-        cout << "Invalid name. Please try again." << endl;
-        return 1;
-    }
+    
     cout << "Enter Client ID: ";
     cin >> id;
     c.setId(id);
@@ -27,23 +23,13 @@ int main()
     cin >> password;
     c.setPassword(password);
 
-    // Check if password is correct
-    if (password.length() < 8 || password.length() > 20)
-    {
-        cout << "Invalid password. Please try again." << endl;
-        return 1;
-    }
+    
     cout << "Enter Client Balance: ";
     cin >> balance;
     c.setBalance(balance);
 
-    // Check if balance is correct
-    if (balance < 1500)
-    {
-        cout << "Invalid balance. Please try again." << endl;
-        return 1;
-    }
-
+    
+    
     c.Displayclientinfo();
 
 
@@ -55,11 +41,7 @@ int main()
     cout << "Enter Employee Name: ";
     cin >> name;
     e.setName(name);
-    if (name.length() < 5 || name.length() > 20)
-    {
-        cout << "Invalid name. Please try again." << endl;
-        return 1;
-    }
+    
     cout << "Enter Employee ID: ";
     cin >> id;
     e.setId(id);
@@ -68,38 +50,26 @@ int main()
     cin >> password;
     e.setPassword(password);
 
-    // Check if password is correct
-    if (password.length() < 8 || password.length() > 20)
-    {
-        cout << "Invalid password. Please try again." << endl;
-        return 1;
-    }
+    
+    
     cout << "Enter Employee Salary: ";
     cin >> salary;
     e.setSalary(salary);
 
-    // Check if salary is correct
-    if (salary < 5000)
-    {
-        cout << "Invalid salary. Please try again." << endl;
-        return 1;
-    }
+    
 
     e.DisplayEmployeeinfo();
     //==================================================================Admin Class===========================================================
 
     Admin a;
+    
 
     
 
     cout << "Enter Admin Name: ";
     cin >> name;
     a.setName(name);
-    if (name.length() < 5 || name.length() > 20)
-    {
-        cout << "Invalid name. Please try again." << endl;
-        return 1;
-    }
+    
     cout << "Enter Admin ID: ";
     cin >> id;
     a.setId(id);
@@ -108,23 +78,14 @@ int main()
     cin >> password;
     a.setPassword(password);
 
-    // Check if password is correct
-    if (password.length() < 8 || password.length() > 20)
-    {
-        cout << "Invalid password. Please try again." << endl;
-        return 1;
-    }
+  
+   
     cout << "Enter Admin Balance: ";
     cin >> balance;
     a.setBalance(balance);
 
-    // Check if balance is correct
-    if (balance < 5000)
-    {
-        cout << "Invalid balance. Please try again." << endl;
-        return 1;
-    }
-
+    
+    
     a.DisplayAdmininfo();
 
 

@@ -179,8 +179,7 @@ public:
     }
     void Displayclientinfo()
     {
-        cout << "       welcome :-   " << endl
-             << endl;
+        cout << "       welcome :-   " << endl;
         cout << " Name     : " << name << endl;
         cout << " password : ************" << endl;
         cout << " id       : " << id << endl;
@@ -272,7 +271,11 @@ class Admin : public Person {
         double balance;
 
     public:
+        Admin() {};
         Admin(string name, string password, int id, double balance) : Person(name, password, id), balance(balance) {}
+        
+
+        
 
         // getters
         double getBalance()
