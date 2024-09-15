@@ -226,18 +226,18 @@ public:
     // setters
     void setSalary(double salary)
     {
-
         while (true)
         {
-            if (salary < 5000)
+            cout << "Please enter a valid balance: ";
+            cin >> salary;
+            if (salary >= 5000)
             {
-                cout << "Salary must be greater than 5000. Please enter a valid salary: ";
-                cin >> salary;
+                this->salary = salary;
+                break;
             }
             else
             {
-                this->salary = salary;
-                break; 
+                cout << "salary must be greater than or equal to 5000." << endl;
             }
         }
     }
@@ -269,17 +269,16 @@ public:
 
         while (true)
         {
-            cout << "Please enter a password: ";
+            cout << "Please enter a valid password: ";
             cin >> password;
-
-            if (password.length() < 8 || password.length() > 20)
-            {
-                cout << "password min size 8. Please enter a valid password: ";
-            }
-            else
+            if (password.length() >= 8 && password.length() <= 20)
             {
                 this->password = password;
                 break;
+            }
+            else
+            {
+                cout << "Password must be between 8 and 20 characters." << endl;
             }
         }
     }
@@ -329,18 +328,18 @@ class Admin : public Person {
         // setters
         void setBalance(double balance)
         {
-
             while (true)
             {
-                if (balance < 5000)
-                {
-                    cout << "balance must be greater than 5000. Please enter a valid balance: ";
-                    cin >> balance;
-                }
-                else
+                cout << "Please enter a valid balance: ";
+                cin >> balance;
+                if (balance >= 5000)
                 {
                     this->balance = balance;
                     break;
+                }
+                else
+                {
+                    cout << "Balance must be greater than or equal to 5000." << endl;
                 }
             }
         }
@@ -348,7 +347,7 @@ class Admin : public Person {
         {
             this->id = id;
         }
-        vvoid setName(string name)
+        void setName(string name)
         {
             while (true)
             {
@@ -368,15 +367,16 @@ class Admin : public Person {
         {
             while (true)
             {
-                if (password.length() < 8 || password.length() > 20)
-                {
-                    cout << "password min size 8. Please enter a valid password: ";
-                    cin >> password;
-                }
-                else
+                cout << "Please enter a valid password: ";
+                cin >> password;
+                if (password.length() >= 8 && password.length() <= 20)
                 {
                     this->password = password;
                     break;
+                }
+                else
+                {
+                    cout << "Password must be between 8 and 20 characters." << endl;
                 }
             }
         }
