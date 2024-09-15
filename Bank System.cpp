@@ -70,7 +70,7 @@ int main()
 
     cout << "Enter Admin Password: ";
     cin >> password;
-   a.setPassword(password);
+    a.setPassword(password);
 
     cout << "Enter Admin Balance: ";
     cin >> balance;
@@ -86,3 +86,4 @@ int main()
 
     return 0;
 }
+

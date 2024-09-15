@@ -1,13 +1,14 @@
+#pragma once
 #ifndef EMPLOYEE_H
 #define EMPLOYEE_H
 #include <iostream>
 #include <string>
-
+#include <cctype>
 using namespace std;
 
 class Person
 {
-private:
+protected:
     // attributes:
     string name;
     string password;
@@ -195,7 +196,7 @@ private:
     double salary;
 
 public:
-    Employee() {}
+    Employee() { this->salary = 0; }
     Employee(string name, string password, int id, double salary) : Person(name, password, id), salary(salary) {}
 
     // getters
@@ -271,7 +272,7 @@ private:
 
 public:
     Admin() { this->balance = 0; }
-    Admin(string name, string password, int id, double balance) : Person(name,password,id), balance(balance) {}
+    Admin(string name, string password, int id, double balance) : Person(name, password, id), balance(balance) {}
 
     // getters
     double getBalance()
@@ -342,3 +343,5 @@ public:
 };
 
 #endif
+
+
