@@ -7,7 +7,7 @@ using namespace std;
 
 class Person
 {
-protected:
+private:
     // attributes:
     string name;
     string password;
@@ -27,7 +27,7 @@ public:
 };
 class Client : public Person
 {
-protected:
+private:
     // attribute:
     double balance;
 
@@ -157,7 +157,7 @@ public:
 
         cout << "----------------------------\n";
     }
-    void transferTo(double amount, Client &recipient)
+    void transferTo(double amount, Client& recipient)
     {
         if (balance < amount)
         {
@@ -180,7 +180,7 @@ public:
     void Displayclientinfo()
     {
         cout << "       welcome :-   " << endl
-             << endl;
+            << endl;
         cout << " Name     : " << name << endl;
         cout << " password : ************" << endl;
         cout << " id       : " << id << endl;
@@ -258,86 +258,86 @@ public:
     // display
     void DisplayEmployeeinfo()
     {
-        cout << "Name: " << name << endl;
-        cout << "ID: " << id << endl;
-        cout << "Salary: " << salary << endl;
+        cout << "Name   : " << name << endl;
+        cout << "ID     : " << id << endl;
+        cout << "Salary : " << salary << endl;
         cout << "------------------------------------" << endl;
     }
 };
 class Admin : public Person {
-    private:
-        string name;
-        string password;
-        int id;
-        double balance;
+private:
 
-    public:
-        Admin(string name, string password, int id, double balance) : Person(name, password, id), balance(balance) {}
+    double balance;
 
-        // getters
-        double getBalance()
-        {
-            return balance;
-        }
-        int getId()
-        {
-            return id;
-        }
-        string getName()
-        {
-            return name;
-        }
-        string getPassword()
-        {
-            return password;
-        }
+public:
+    Admin() { this->balance = 0; }
+    Admin(string name, string password, int id, double balance) : Person(name,password,id), balance(balance) {}
 
-        // setters
-        void setBalance(double balance)
-        {
-            if (balance < 5000)
-            {
-                cout << "balance must be greater than 5000" << endl;
-            }
-            else
-            {
-                this->balance = balance;
-            }
-        }
-        void setId(int id)
-        {
-            this->id = id;
-        }
-        void setName(string name)
-        {
-            if (name.length() < 5 || name.length() > 20)
-            {
-                cout << "Name must be between 8 and 20 characters" << endl;
-            }
-            else
-            {
-                this->name = name;
-            }
-        }
-        void setPassword(string password)
-        {
-            if (password.length() < 8 || password.length() > 20)
-            {
-                cout << "Password must be between 8 and 20 characters" << endl;
-            }
-            else
-            {
-                this->password = password;
-            }
-        }
+    // getters
+    double getBalance()
+    {
+        return balance;
+    }
+    int getId()
+    {
+        return id;
+    }
+    string getName()
+    {
+        return name;
+    }
+    string getPassword()
+    {
+        return password;
+    }
 
-        // display
-        void DisplayAdmininfo()
+    // setters
+    void setBalance(double balance)
+    {
+        if (balance < 5000)
         {
-            cout << "Name: " << name << endl;
-            cout << "ID: " << id << endl;
-            cout << "Balance: " << balance << endl;
+            cout << "balance must be greater than 5000" << endl;
         }
+        else
+        {
+            this->balance = balance;
+        }
+    }
+    void setId(int id)
+    {
+        this->id = id;
+    }
+    void setName(string name)
+    {
+        if (name.length() < 5 || name.length() > 20)
+        {
+            cout << "Name must be between 8 and 20 characters" << endl;
+        }
+        else
+        {
+            this->name = name;
+        }
+    }
+    void setPassword(string password)
+    {
+        if (password.length() < 8 || password.length() > 20)
+        {
+            cout << "Password must be between 8 and 20 characters" << endl;
+        }
+        else
+        {
+            this->password = password;
+        }
+    }
+
+    // display
+    void DisplayAdmininfo()
+    {
+        cout << " Name    : " << name << endl;
+        cout << " ID      : " << id << endl;
+        cout << " Balance : " << balance << endl;
+        cout << "------------------------------------" << endl;
+    }
 
 };
 
