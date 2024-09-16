@@ -2,6 +2,7 @@
 #define EMPLOYEE_H
 #include <iostream>
 #include <string>
+#include <cctype>
 
 using namespace std;
 class Person
