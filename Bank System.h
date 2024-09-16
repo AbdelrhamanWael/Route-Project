@@ -4,7 +4,6 @@
 #include <string>
 
 using namespace std;
-
 class Person
 {
 protected:
@@ -25,9 +24,10 @@ public:
         this->id = id;
     }
 };
+
 class Client : public Person
 {
-protected:
+private:
     // attribute:
     double balance;
 
@@ -41,82 +41,56 @@ public:
         : Person(name, password, id)
     {
 
-        if (balance < 1500)
+        while (balance < 1500)
         {
-            cout << "the minimum of balance is 1500 !";
-        
-            return;
+            cout << "Minimum balance is 1500! Please enter again: ";
+            cin >> balance;
         }
-        else
-        {
-            this->balance = balance;
-        }
+
+        this->balance = balance;
     }
 
     // setter:
+
     void setName(string name)
     {
 
-        int count = 0;
-
-        if (name.length() < 5 || name.length() > 20)
+        while (name.length() < 5 || name.length() > 20)
         {
-            cout << "the name must be between 5 to 20 latter !" << endl;
-            return;
+            cout << "Name must be between 5 to 20 letters! Please enter again: ";
+            cin >> name;
+        }
+        for (char ch : name)
+        {
+            if (!isalpha(ch))
+            {
+                cout << "The name must contain letters only! Please enter again :";
+                cin >> name;
+            }
         }
 
-        else
-        {
-            for (int i = 0; i < name.size(); i++)
-            {
-                if (isalpha(name[i]))
-                {
-                    count++;
-                }
-            }
-            if (count != name.length())
-            {
-                cout << " not done";
-            }
-            else
-            {
-                cout << "done";
-            }
-
-            this->name = name;
-        }
+        this->name = name;
     }
+
     void setPassword(string password)
     {
-        while (true)
+        while (password.length() < 5 || password.length() > 20)
         {
-            if (password.length() < 8 || password.length() > 20)
-            {
-                cout << "password min size 8. Please enter a valid password: ";
-                cin >> password;
-            }
-            else
-            {
-                this->password = password;
-                break;
-            }
+            cout << "Password must be between 5 to 20 characters! Please enter again: ";
+            cin >> password;
         }
+
+        this->password = password;
     }
     void setBalance(double balance)
     {
-        while (true)
+        while (balance < 1500)
         {
-            if (balance < 1500)
-            {
-                cout << "balance must be greater than 1500. Please enter a valid balance: ";
-                cin >> balance;
-            }
-            else
-            {
-                this->balance = balance;
-                break;
-            }
+            cout << "Minimum balance is 1500! Please enter again: ";
+            cin >> balance;
         }
+
+        this->balance = balance;
     }
     void setId(int id)
     {
@@ -187,7 +161,8 @@ public:
     }
     void Displayclientinfo()
     {
-        cout << "       welcome :-   " << endl;
+        cout << "       welcome :-   " << endl
+             << endl;
         cout << " Name     : " << name << endl;
         cout << " password : ************" << endl;
         cout << " id       : " << id << endl;
@@ -202,7 +177,7 @@ private:
     double salary;
 
 public:
-    Employee() {}
+    Employee() { this->salary = 0; }
     Employee(string name, string password, int id, double salary) : Person(name, password, id), salary(salary) {}
 
     // getters
@@ -226,169 +201,138 @@ public:
     // setters
     void setSalary(double salary)
     {
-        while (true)
+        while (salary < 5000)
         {
-            cout << "Please enter a valid balance: ";
+            cout << "Minimum salary is 5000! Please enter again: ";
             cin >> salary;
-            if (salary >= 5000)
-            {
-                this->salary = salary;
-                break;
-            }
-            else
-            {
-                cout << "salary must be greater than or equal to 5000." << endl;
-            }
         }
-    }
 
+        this->salary = salary;
+    }
     void setId(int id)
     {
         this->id = id;
     }
     void setName(string name)
     {
-        while (true)
+        while (name.length() < 5 || name.length() > 20)
         {
-            if (name.length() < 5 || name.length() > 20)
+            cout << "Name must be between 5 to 20 letters! Please enter again: ";
+            cin >> name;
+        }
+        for (char ch : name)
+        {
+            if (!isalpha(ch))
             {
-                cout << "name min size 5. Please enter a valid name: ";
+                cout << "The name must contain letters only! Please enter again :";
                 cin >> name;
-            }
-            else
-            {
-                this->name = name;
-                break;
             }
         }
 
-        
+        this->name = name;
+        ;
     }
     void setPassword(string password)
     {
-
-        while (true)
+        while (password.length() < 5 || password.length() > 20)
         {
-            cout << "Please enter a valid password: ";
+            cout << "Password must be between 5 to 20 characters! Please enter again: ";
             cin >> password;
-            if (password.length() >= 8 && password.length() <= 20)
-            {
-                this->password = password;
-                break;
-            }
-            else
-            {
-                cout << "Password must be between 8 and 20 characters." << endl;
-            }
         }
+
+        this->password = password;
     }
 
     // display
     void DisplayEmployeeinfo()
     {
-        cout << "Name: " << name << endl;
-        cout << "ID: " << id << endl;
-        cout << "Password: " << password << endl;
-        cout << "Salary: " << salary << endl;
+        cout << "Name   : " << name << endl;
+        cout << "ID     : " << id << endl;
+        cout << "Salary : " << salary << endl;
         cout << "------------------------------------" << endl;
     }
 };
-class Admin : public Person {
-    private:
-        string name;
-        string password;
-        int id;
-        double balance;
 
-    public:
-        Admin() {};
-        Admin(string name, string password, int id, double balance) : Person(name, password, id), balance(balance) {}
-        
+class Admin : public Person
+{
+private:
+    double salary;
 
-        
+public:
+    Admin() { this->salary = 0; }
+    Admin(string name, string password, int id, double balance) : Person(name, password, id), salary(salary) {}
 
-        // getters
-        double getBalance()
+    // getters
+    double getBalance()
+    {
+        return salary;
+    }
+    int getId()
+    {
+        return id;
+    }
+    string getName()
+    {
+        return name;
+    }
+    string getPassword()
+    {
+        return password;
+    }
+
+    // setters
+    void setSalary(double salary)
+    {
+        while (salary < 5000)
         {
-            return balance;
-        }
-        int getId()
-        {
-            return id;
-        }
-        string getName()
-        {
-            return name;
-        }
-        string getPassword()
-        {
-            return password;
+            cout << "Minimum salary is 5000! Please enter again: ";
+            cin >> salary;
         }
 
-        // setters
-        void setBalance(double balance)
+        this->salary = salary;
+    }
+    void setId(int id)
+    {
+        this->id = id;
+    }
+    void setName(string name)
+    {
+        while (name.length() < 5 || name.length() > 20)
         {
-            while (true)
+            cout << "Name must be between 5 to 20 letters! Please enter again: ";
+            cin >> name;
+        }
+        for (char ch : name)
+        {
+            if (!isalpha(ch))
             {
-                cout << "Please enter a valid balance: ";
-                cin >> balance;
-                if (balance >= 5000)
-                {
-                    this->balance = balance;
-                    break;
-                }
-                else
-                {
-                    cout << "Balance must be greater than or equal to 5000." << endl;
-                }
-            }
-        }
-        void setId(int id)
-        {
-            this->id = id;
-        }
-        void setName(string name)
-        {
-            while (true)
-            {
-                if (name.length() < 5 || name.length() > 20)
-                {
-                    cout << "name min size 5. Please enter a valid name: ";
-                    cin >> name;
-                }
-                else
-                {
-                    this->name = name;
-                    break;
-                }
-            }
-        }
-        void setPassword(string password)
-        {
-            while (true)
-            {
-                cout << "Please enter a valid password: ";
-                cin >> password;
-                if (password.length() >= 8 && password.length() <= 20)
-                {
-                    this->password = password;
-                    break;
-                }
-                else
-                {
-                    cout << "Password must be between 8 and 20 characters." << endl;
-                }
+                cout << "The name must contain letters only! Please enter again :";
+                cin >> name;
             }
         }
 
-        // display
-        void DisplayAdmininfo()
+        this->name = name;
+    }
+    void setPassword(string password)
+    {
+        while (password.length() < 5 || password.length() > 20)
         {
-            cout << "Name: " << name << endl;
-            cout << "ID: " << id << endl;
-            cout << "Balance: " << balance << endl;
+            cout << "Password must be between 5 to 20 characters! Please enter again: ";
+            cin >> password;
         }
 
+        this->password = password;
+    }
+
+    // display
+    void DisplayAdmininfo()
+    {
+        cout << " Name    : " << name << endl;
+        cout << " ID      : " << id << endl;
+        cout << " Salary : " << salary << endl;
+        cout << "------------------------------------" << endl;
+    }
 };
+
 
 #endif

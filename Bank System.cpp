@@ -27,10 +27,11 @@ int main()
     cout << "Enter Client Balance: ";
     cin >> balance;
     c.setBalance(balance);
+    cout <<"+++++++++++++++++++++++++++++" <<endl;
 
     
     
-    c.Displayclientinfo();
+    // c.Displayclientinfo();
 
 
     //====================================================== For Employee Class======================================================
@@ -55,10 +56,11 @@ int main()
     cout << "Enter Employee Salary: ";
     cin >> salary;
     e.setSalary(salary);
+    cout <<"+++++++++++++++++++++++++++++" <<endl;
 
     
 
-    e.DisplayEmployeeinfo();
+    // e.DisplayEmployeeinfo();
     //==================================================================Admin Class===========================================================
 
     Admin a;
@@ -82,13 +84,16 @@ int main()
    
     cout << "Enter Admin Balance: ";
     cin >> balance;
-    a.setBalance(balance);
+    a.setSalary(balance);
 
-    
-    
+
+    c.Displayclientinfo();
+    cout << endl;
+    e.DisplayEmployeeinfo();
+    cout << endl;
     a.DisplayAdmininfo();
 
-
+    
     
     
 
