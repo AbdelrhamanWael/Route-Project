@@ -1,6 +1,10 @@
 
 #include <iostream>
-#include "Bank System.h"
+//#include "Bank System.h"
+#include "Client.h"
+#include "Employee.h"
+#include "Admin.h"
+
 using namespace std;
 int main()
 {
