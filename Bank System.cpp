@@ -32,23 +32,7 @@ int main()
     cout<< "===========================================" << endl;
 
     // c.Displayclientinfo();
-    ofstream outputFile("client_data.txt");
-
-    if (outputFile.is_open())
-    {
-        // Write client data to the file
-        outputFile << "Client Name: " << name << endl;
-        outputFile << "Client ID: " << id << endl;
-        outputFile << "Client Password: " << password << endl;
-        outputFile << "Client Balance: " << balance << endl;
-
-        outputFile.close();
-    }
-    else
-    {
-        cout << "Unable to open file";
-    }
-
+    
         //============================== For Employee Class=================================
     Employee e;
 
