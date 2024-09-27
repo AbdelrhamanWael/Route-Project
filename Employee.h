@@ -5,6 +5,7 @@
 #include "Client.h"
 #include "Validation.h"
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -12,9 +13,12 @@ class Employee : public Person
 {
 private:
     double salary;
+    vector<Client*> clients;
 
 public:
+
     Employee() { this->salary = 0; }
+    ~Employee();
     Employee(string name, string password, int id, double salary) : Person(name, password, id), salary(salary) {}
 
     // getters
@@ -60,8 +64,44 @@ public:
         this->password = password;
     }
 
-    // display
-    void DisplayEmployeeinfo()
+    // add Client
+    void addClient(Client& client){
+        Client* newClient = new Client(client);
+        clients.push_back(newClient);
+    }
+    //search
+    bool searchClient(int id){
+        for (int i = 0; i < clients.size(); i++)
+        {
+            if (clients[i]->getId() == id)
+            {
+                return true;
+            }
+        }
+            return false;
+        }
+    //listofclient
+    void listofclient(){
+        for (int i = 0; i < clients.size(); i++)
+        {
+            clients[i]->Displayclientinfo();
+        }
+    }
+    void editClient(int id, string name, string password, double balance){
+        for (int i = 0; i < clients.size(); i++)
+        {
+            if (clients[i]->getId() == id)
+            {
+                clients[i]->setName(name);
+                clients[i]->setPassword(password);
+                clients[i]->setBalance(balance);
+            }
+        }
+    }
+    
+
+        // display
+        void DisplayEmployeeinfo()
     {
         cout << "Name   : " << name << endl;
         cout << "ID     : " << id << endl;
