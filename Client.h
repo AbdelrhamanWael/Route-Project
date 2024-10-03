@@ -3,30 +3,10 @@
 #define CLIENT_H
 #include <iostream>
 #include "Validation.h"
+#include "Person.h"
 #include <string>
 
 using namespace std;
-
-class Person
-{
-protected:
-    // attributes:
-    string name;
-    string password;
-    int id;
-
-public:
-    Person()
-    {
-        this->id = 0;
-    }
-    Person(string name, string password, int id)
-    {
-        this->name = name;
-        this->password = password;
-        this->id = id;
-    }
-};
 
 class Client : public Person
 {
@@ -117,7 +97,7 @@ public:
 
         cout << "----------------------------\n";
     }
-    void transferTo(double amount, Client &recipient)
+    void transferTo(double amount, Client& recipient)
     {
         if (balance < amount)
         {
@@ -142,12 +122,13 @@ public:
     void Displayclientinfo()
     {
         cout << "       welcome :-   " << endl
-             << endl;
+            << endl;
         cout << " Name     : " << name << endl;
         cout << " password : ************" << endl;
         cout << " id       : " << id << endl;
         cout << " Balance  : " << balance << endl;
         cout << "----------------------------\n";
     }
+
 };
 #endif

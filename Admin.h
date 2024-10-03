@@ -2,7 +2,7 @@
 #ifndef ADMIN_H
 #define ADMIN_H
 #include <iostream>
-#include "Client.h"
+#include "Person.h"
 #include "Validation.h"
 #include <string>
 

@@ -2,7 +2,7 @@
 #ifndef EMPLOYEE_H
 #define EMPLOYEE_H
 #include <iostream>
-#include "Client.h"
+#include "Person.h"
 #include "Validation.h"
 #include <string>
 #include <vector>
@@ -65,12 +65,12 @@ public:
     }
 
     // add Client
-    void addClient(Client& client){
+    void addClient(Client& client) {
         Client* newClient = new Client(client);
         clients.push_back(newClient);
     }
     //search
-    bool searchClient(int id){
+    bool searchClient(int id) {
         for (int i = 0; i < clients.size(); i++)
         {
             if (clients[i]->getId() == id)
@@ -78,16 +78,16 @@ public:
                 return true;
             }
         }
-            return false;
-        }
+        return false;
+    }
     //listofclient
-    void listofclient(){
+    void listofclient() {
         for (int i = 0; i < clients.size(); i++)
         {
             clients[i]->Displayclientinfo();
         }
     }
-    void editClient(int id, string name, string password, double balance){
+    void editClient(int id, string name, string password, double balance) {
         for (int i = 0; i < clients.size(); i++)
         {
             if (clients[i]->getId() == id)
@@ -98,10 +98,10 @@ public:
             }
         }
     }
-    
 
-        // display
-        void DisplayEmployeeinfo()
+
+    // display
+    void DisplayEmployeeinfo()
     {
         cout << "Name   : " << name << endl;
         cout << "ID     : " << id << endl;
