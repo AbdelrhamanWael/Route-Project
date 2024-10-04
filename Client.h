@@ -20,7 +20,7 @@ public:
     {
         this->balance = 0;
     };
-    Client(string name, string password, int id, double balance)
+    Client(string name,int id,double balance ,string password)
         : Person(name, password, id)
     {
 

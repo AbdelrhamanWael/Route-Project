@@ -5,7 +5,7 @@
 #include "Employee.h"
 #include"Admin.h"
 #include "Client.h"
-#include "Data.h"
+#include "DataSourceInterface.h"
 
 using namespace std;
 
@@ -64,7 +64,7 @@ if (choice == 1)
     cout << "Enter Client Password";
     cin >> Clientpassword;
     Client* client = new Client(clientName, clientId, clientBalance, Clientpassword);
-    e.addClient(client);
+    e.addClient(*client);
     clientAdded = true;
 }
 else
