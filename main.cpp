@@ -73,7 +73,7 @@ int main()
 
     // e.DisplayEmployeeinfo();
 
-    ofstream outputFile1("employee_data.txt");
+    ofstream outputFile1("employee.txt");
 
     if (outputFile1.is_open())
     {

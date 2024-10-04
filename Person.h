@@ -1,16 +1,29 @@
+#pragma once
 #ifndef PERSON_H
 #define PERSON_H
+#include<iostream>
+#include <string>
+using namespace std;
 
 
 class Person
 {
-    public:
-        Person();
-        virtual ~Person();
+protected:
+    // attributes:
+    string name;
+    string password;
+    int id;
 
-    protected:
-
-    private:
+public:
+    Person()
+    {
+        this->id = 0;
+    }
+    Person(string name, string password, int id)
+    {
+        this->name = name;
+        this->password = password;
+        this->id = id;
+    }
 };
-
-#endif // PERSON_H
+#endif
