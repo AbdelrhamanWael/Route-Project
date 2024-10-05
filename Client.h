@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Validation.h"
 #include "Person.h"
+#include <vector>
 #include <string>
 
 using namespace std;
@@ -131,7 +132,6 @@ public:
     }
 
 };
-
 
 static vector<Client> allCient;
 vector <Client>::iterator cit;
