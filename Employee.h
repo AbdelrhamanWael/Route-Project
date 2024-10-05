@@ -19,8 +19,8 @@ private:
 public:
 
     Employee() { this->salary = 0; }
-    ~Employee();
-    Employee(string name, string password, int id, double salary) : Person(name, password, id), salary(salary) {}
+    ~Employee() {}
+    Employee(string name, string password, int id, double salary,double balance) : Person(name, password, id), salary(salary) {}
 
     // getters
     double getSalary()
