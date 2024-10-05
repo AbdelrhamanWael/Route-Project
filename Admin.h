@@ -3,20 +3,20 @@
 #define ADMIN_H
 #include <iostream>
 #include "Person.h"
+#include "Employee.h"
 #include "Validation.h"
 #include <string>
 
 using namespace std;
 
-class Admin : public Person
+class Admin : public Employee
 {
 private:
     double salary;
 
 public:
     Admin() { this->salary = 0; }
-    Admin(string name, string password, int id, double balance) : Person(name, password, id), salary(salary) {}
-
+    Admin(string name, string password, int id, double balance) : Employee(name, password, id,salary){}
     // getters
     double getBalance()
     {
@@ -68,5 +68,9 @@ public:
         cout << "------------------------------------" << endl;
     }
 };
+
+
+static vector<Admin> allAdmin;
+vector <Admin>::iterator ait;
 
 #endif

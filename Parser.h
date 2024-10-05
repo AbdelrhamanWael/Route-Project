@@ -10,7 +10,6 @@
 #include "Admin.h"
 using namespace std;
 
-	vector<string>parts;
 
 class Parser
 {
@@ -20,52 +19,46 @@ public:
 
 		string part;
 		stringstream ss (line);
+		vector<string>info;
 
 		while (getline(ss, part, '&')) {
-			parts.push_back(part);
+			info.push_back(part);
 		}
-
+		return info;
 	}
 
 	static Client ParseToClinet(string line) {
+		vector <string>info=split(line);
 		Client c;
-
-		split(line);
-
-		c.setId(stoi(parts[0]));
-		c.setName(parts[1]);
-		c.setPassword(parts[2]);
-		c.setBalance(stod(parts[3]));
+		c.setId(stoi(info[0]));
+		c.setName(info[1]);
+		c.setPassword(info[2]);
+		c.setBalance(stod(info[3]));
 
 		return c;
 	}
 
 	static Employee ParseToEmployee(string line) {
+		vector<string>info=split(line);
 		Employee e;
-
-		split(line);
-
-		e.setId(stoi(parts[0]));
-		e.setName(parts[1]);
-		e.setPassword(parts[2]);
-		e.setSalary(stod(parts[3]));
+		e.setId(stoi(info[0]));
+		e.setName(info[1]);
+		e.setPassword(info[2]);
+		e.setSalary(stod(info[3]));
 
 		return e;
 	}
 
 	static Admin ParseToAdmin(string line) {
+		vector<string>info=split(line);
 		Admin a;
-
-		split(line);
-
-		a.setId(stoi(parts[0]));
-		a.setName(parts[1]);
-		a.setPassword(parts[2]);
-		a.setSalary(stod(parts[3]));
+		a.setId(stoi(info[0]));
+		a.setName(info[1]);
+		a.setPassword(info[2]);
+		a.setSalary(stod(info[3]));
 
 		return a;
 	}
-
 
 
 };

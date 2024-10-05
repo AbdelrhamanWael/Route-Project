@@ -3,6 +3,7 @@
 #define EMPLOYEE_H
 #include <iostream>
 #include "Person.h"
+#include "Client.h"
 #include "Validation.h"
 #include <string>
 #include <vector>
@@ -64,6 +65,7 @@ public:
         this->password = password;
     }
 
+
     // add Client
     void addClient(Client& client) {
         Client* newClient = new Client(client);
@@ -109,4 +111,9 @@ public:
         cout << "------------------------------------" << endl;
     }
 };
+
+static vector<Employee> allEmployee;
+vector <Employee>::iterator eit;
+
+
 #endif

@@ -131,4 +131,9 @@ public:
     }
 
 };
+
+
+static vector<Client> allCient;
+vector <Client>::iterator cit;
+
 #endif

@@ -1,56 +1,88 @@
 #pragma once
-#ifndef FILEMANAGE_H
-#define FILEMANAGE_H
+#ifndef FILESHELPER_H
+#define FILESHELPER_H
 #include <iostream>
-#include "DataSourceInterface.h"
-#include "FilesHelper.h"
+#include <fstream>
+#include <string>
+#include "Client.h"
+#include "Employee.h"
+#include "Admin.h"
+#include "Parser.h"
+#include <vector>
 using namespace std;
 
-// implement DataSourceinterface ;
-// we will call the function from FileHelper only;
-
-
-class FileManage: public DataSourceInterface
+class FilesHelper
 {
-	 void addClient(Client) {
+public :
 
-		 //FilesHelper::saveClient(Client c)
-	 }
+	static void saveLast(string fileName, int id) {
+		fstream myfile(fileName);
+		myfile << id;
+		myfile.close();
+	}
 
-	 void addEmploy(Employee) {
+	static int getlast(string fileName) {
+		fstream myfile(fileName);
+		int id;
+		myfile >> id;
+		myfile.close();
 
-		// FilesHelper::saveEmployee(string flieName, string lastIdFile, Employee e)
-	 }
+		return id;
+	}
 
-	 void addAdmin(Admin) {
+	static void saveClient(Client c) {           //Add New Client to File
+		int id = getlast("clientLastId.txt");
+		fstream file("client.txt", ios::app);
+		file << id+1 <<'&' << c.getName() << '&' << c.getPassword() << '&' << c.getPassword()<<endl;
+		file.close();
+		saveLast("clientLastId.txt", id + 1);
+	}
 
-		//saveEmployee(string flieName, string lastIdFile, Employee e)
-	 }
+	static void saveEmployee(string fileName, string lastIdFile, Employee e) {        //add Admin or emmployee
+		int id = getlast(lastIdFile);
+		fstream file(fileName, ios::app);
+		file <<id+1 <<'&' << e.getName() << '&' << e.getPassword() << '&' << e.getSalary() << endl;
+		file.close();
+		saveLast(lastIdFile, id + 1);
+	}
 
-	 vector<Client> getAllClients() {
+	static void getClients(){
+		string line;
+		fstream file("client.txt");
+		while (getline(file, line)) {
+			Client c =Parser::ParseToClinet(line);
+			allCient.push_back(c);
+		}
+	}
 
-		 FilesHelper::getClients();
-	 }
+	static void getEmployees() {
+		string line;
+		fstream file("employee.txt");
+		while (getline(file, line)) {
+			Employee e = Parser::ParseToEmployee(line);
+			allEmployee.push_back(e);
+		}
+	}
 
-	 vector<Employee> getAllEmployees() {
-		 FilesHelper::getEmployees();
-	 }
+	static void getAdmins() {
+		string line;
+		fstream file("admin.txt");
+		while (getline(file, line)) {
+			Admin a = Parser::ParseToAdmin(line);
+			allAdmin.push_back(a);
+		}
+	}
 
-	 vector<Admin> getAllAdmins() {
-		 FilesHelper::getAdmins();
-	 }
 
-	 void removeAllClient() {
-		 FilesHelper::clearFile("client.txt", "clientLastId.txt");
-	 }
+	static void clearFile(string flieName, string LastIdFile) {
 
-	 void removeAllEmployee() {
-		 FilesHelper::clearFile("admin.txt", "adminLastLd.txt");
-	 }
+		fstream clear(flieName, ios::out);
+		clear.close();
 
-	 void removeAllAdmin() {
-		 FilesHelper::clearFile("employee.txt", "employeeLastId.txt");
-	 }
+		fstream clearId(LastIdFile, ios::out);
+		clearId << 0;
+		clearId.close();
+	}
 };
 
 #endif
