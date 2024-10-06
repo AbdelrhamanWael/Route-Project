@@ -13,107 +13,51 @@ using namespace std;
 class Employee : public Person
 {
 private:
-    double salary;
-    vector<Client*> clients;
-
+	double salary;
 public:
+	Employee() : Person() {
+		salary = 0;
+	}
+	Employee(int id, string name, string password, double salary) : Person(id, name, password) {
+		setSalary(salary);
+	}
 
-    Employee() { this->salary = 0; }
-    ~Employee();
-    Employee(string name, string password, int id, double salary) : Person(name, password, id), salary(salary) {}
+	void setSalary(double salary) {
+		if (Validation::validateSalary(salary)) 
+			this->salary = salary;
+		else cout << "Invalid salary\n";
+	}
 
-    // getters
-    double getSalary()
-    {
-        return salary;
-    }
-    int getId()
-    {
-        return id;
-    }
-    string getName()
-    {
-        return name;
-    }
-    string getPassword()
-    {
-        return password;
-    }
+	double getSalary() {
+		return salary;
+	}
+	void display() {
+		Person::display();
+		cout << "Salary : " << salary << endl;
+	}
 
-    // setters
-    void setSalary(double salary)
-    {
-        Validation::valiSalary(salary);
-
-        this->salary = salary;
-    }
-    void setId(int id)
-    {
-        this->id = id;
-    }
-    void setName(string name)
-    {
-        Validation::valiName(name);
-
-        this->name = name;
-        ;
-    }
-    void setPassword(string password)
-    {
-        Validation::valiPassword(password);
-
-        this->password = password;
-    }
-
-
-    // add Client
-    void addClient(Client& client) {
-        Client* newClient = new Client(client);
-        clients.push_back(newClient);
-    }
-    //search
-    bool searchClient(int id) {
-        for (int i = 0; i < clients.size(); i++)
-        {
-            if (clients[i]->getId() == id)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-    //listofclient
-    void listofclient() {
-        for (int i = 0; i < clients.size(); i++)
-        {
-            clients[i]->Displayclientinfo();
-        }
-    }
-    void editClient(int id, string name, string password, double balance) {
-        for (int i = 0; i < clients.size(); i++)
-        {
-            if (clients[i]->getId() == id)
-            {
-                clients[i]->setName(name);
-                clients[i]->setPassword(password);
-                clients[i]->setBalance(balance);
-            }
-        }
-    }
-
-
-    // display
-    void DisplayEmployeeinfo()
-    {
-        cout << "Name   : " << name << endl;
-        cout << "ID     : " << id << endl;
-        cout << "Salary : " << salary << endl;
-        cout << "------------------------------------" << endl;
-    }
+	void addClient(Client& client) {
+		allClients.push_back(client);
+	}
+	Client* searchClient(int id) {
+		for (clIt = allClients.begin(); clIt != allClients.end(); clIt++) {
+			if (clIt->getID() == id) return clIt._Ptr;
+		}
+		return NULL;
+	}
+	void listClient() {
+		for (clIt = allClients.begin(); clIt != allClients.end(); clIt++) {
+			clIt->display();
+			cout << "-------------------------\n";
+		}
+	}
+	void editClient(int id, string name, string password, double balance) {
+		searchClient(id)->setName(name);
+		searchClient(id)->setPassword(password);
+		searchClient(id)->setBalance(balance);
+	}
 };
 
-static vector<Employee> allEmployee;
-vector <Employee>::iterator eit;
 
-
-#endif
+static vector<Employee> allEmployees;
+static vector<Employee>::iterator eIt;
