@@ -18,30 +18,24 @@ protected:
 public:
     Person();
     virtual ~Person();
-    Person(string name, int id, string password); 
-
-
+    Person(string name, string password, int id);
 };
 
-on
 Person::Person()
 {
     this->id = 0;
 }
 
-
-Person::Person(string name, int id, string password) 
+Person::Person(string name, string password, int id)
 {
     this->name = name;
     this->password = password;
     this->id = id;
 }
 
-// Destructor implementation
 Person::~Person()
 {
-    
+    // Add any necessary cleanup code here
 }
 
-
-#endif 
+#endif // PERSON_H

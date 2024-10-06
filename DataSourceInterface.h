@@ -21,4 +21,4 @@ protected:
 	virtual void removeAllAdmin() = 0;
 };
 
-#endif
+#endif // DATASOURCEINTERFACE_H

@@ -4,7 +4,6 @@
 #include <iostream>
 #include "Person.h"
 
-
 #include "Client.h"
 #include "Validation.h"
 #include <string>
@@ -126,10 +125,4 @@ public:
         cout << "------------------------------------" << endl;
     }
 };
-
-// Define static members outside the class definition
-vector<Client*> Employee::allClients;
-vector<Employee> Employee::allEmplyees;
-vector<Employee>::iterator Employee::eIt;
-
 #endif
