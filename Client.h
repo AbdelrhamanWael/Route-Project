@@ -5,6 +5,7 @@
 #include "Validation.h"
 #include "Person.h"
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -20,7 +21,7 @@ public:
     {
         this->balance = 0;
     };
-    Client(string name,int id,double balance ,string password)
+    Client(string name, string password, int id, double balance)
         : Person(name, password, id)
     {
 
@@ -124,11 +125,16 @@ public:
         cout << "       welcome :-   " << endl
             << endl;
         cout << " Name     : " << name << endl;
-        cout << " password : ************" << endl;
+        cout << " password : ****" << endl;
         cout << " id       : " << id << endl;
         cout << " Balance  : " << balance << endl;
         cout << "----------------------------\n";
     }
-
+    
 };
+
+
+static vector<Client> allCient;
+vector <Client>::iterator cit;
+
 #endif

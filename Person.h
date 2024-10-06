@@ -5,6 +5,7 @@
 #include <string>
 using namespace std;
 
+
 class Person
 {
 protected:
@@ -13,27 +14,34 @@ protected:
     string password;
     int id;
 
+
 public:
     Person();
     virtual ~Person();
-    Person(string name, string password, int id);
+    Person(string name, int id, string password); 
+
+
 };
 
+on
 Person::Person()
 {
     this->id = 0;
 }
 
-Person::Person(string name, string password, int id)
+
+Person::Person(string name, int id, string password) 
 {
     this->name = name;
     this->password = password;
     this->id = id;
 }
 
+// Destructor implementation
 Person::~Person()
 {
-    // Add any necessary cleanup code here
+    
 }
 
-#endif // PERSON_H
+
+#endif 

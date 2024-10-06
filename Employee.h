@@ -4,24 +4,34 @@
 #include <iostream>
 #include "Person.h"
 
+
 #include "Client.h"
 #include "Validation.h"
 #include <string>
 #include <vector>
+#include <iterator>
+
 
 using namespace std;
+
 
 class Employee : public Person
 {
 private:
     double salary;
-    vector<Client*> clients;
+    static vector<Client*> allClients;
+    static vector<Employee> allEmplyees;
+    static vector<Employee>::iterator eIt;
 
 public:
 
+
     Employee() { this->salary = 0; }
     ~Employee() {}
-    Employee(string name, string password, int id, double salary,double balance) : Person(name, password, id), salary(salary) {}
+    Employee(int id, string name, string password, double salary) : Person(id, name, password) {
+        setSalary(salary);
+    }
+
 
     // getters
     double getSalary()
@@ -40,6 +50,7 @@ public:
     {
         return password;
     }
+
 
     // setters
     void setSalary(double salary)
@@ -66,40 +77,44 @@ public:
         this->password = password;
     }
 
+
     // add Client
     void addClient(Client& client) {
-        Client* newClient = new Client(client);
-        clients.push_back(newClient);
+        
+        allClients.push_back(client);
     }
     //search
-    bool searchClient(int id) {
-        for (int i = 0; i < clients.size(); i++)
+    Client* searchClient(int id){
+        for (Client* client : allClients)
         {
-            if (clients[i]->getId() == id)
+            if (client->getId() == id)
             {
-                return true;
+                return client;
             }
         }
-        return false;
+        return nullptr;
     }
     //listofclient
-    void listofclient() {
-        for (int i = 0; i < clients.size(); i++)
+    void listofclient(){
+        for (Client* client : allClients)
         {
-            clients[i]->Displayclientinfo();
+            client->Displayclientinfo();
         }
     }
-    void editClient(int id, string name, string password, double balance) {
-        for (int i = 0; i < clients.size(); i++)
+    //EDITCLIENT
+    void editClient(int id, string name, string password, double balance)
+    {
+        for (int i = 0; i < allClients.size(); i++)
         {
-            if (clients[i]->getId() == id)
+            if (allClients[i]->getId() == id)
             {
-                clients[i]->setName(name);
-                clients[i]->setPassword(password);
-                clients[i]->setBalance(balance);
+                allClients[i]->setName(name);
+                allClients[i]->setPassword(password);
+                allClients[i]->setBalance(balance);
             }
         }
     }
+
 
 
     // display
@@ -111,4 +126,10 @@ public:
         cout << "------------------------------------" << endl;
     }
 };
+
+// Define static members outside the class definition
+vector<Client*> Employee::allClients;
+vector<Employee> Employee::allEmplyees;
+vector<Employee>::iterator Employee::eIt;
+
 #endif

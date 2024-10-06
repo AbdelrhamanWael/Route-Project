@@ -66,6 +66,7 @@ if (choice == 1)
     Client* client = new Client(clientName, clientId, clientBalance, Clientpassword);
     e.addClient(*client);
     clientAdded = true;
+    delete client;
 }
 else
 {
