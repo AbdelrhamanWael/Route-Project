@@ -14,6 +14,10 @@ class Employee : public Person
 {
 private:
 	double salary;
+	int id;
+	string name;
+	string password;
+	
 public:
 	Employee() : Person() {
 		salary = 0;
@@ -21,16 +25,40 @@ public:
 	Employee(int id, string name, string password, double salary) : Person(id, name, password) {
 		setSalary(salary);
 	}
-
+	//getter
+	int getId()
+    {
+        return id;
+    }
+    string getName()
+    {
+        return name;
+    }
+    string getPassword()
+    {
+        return password;
+	}
+	double getSalary() {
+		return salary;
+	}
+	//setter
+	void setId(int id)
+	{
+		this->id = id;
+	}
+	void setName(string name)
+	{
+		this->name = name;
+	}
+	void setPassword(string password)
+	{
 	void setSalary(double salary) {
 		if (Validation::validateSalary(salary)) 
 			this->salary = salary;
 		else cout << "Invalid salary\n";
 	}
 
-	double getSalary() {
-		return salary;
-	}
+	
 	void display() {
 		Person::display();
 		cout << "Salary : " << salary << endl;
