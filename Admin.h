@@ -41,3 +41,6 @@ public:
 
 static vector<Admin> allAdmins;
 static vector<Admin>::iterator aIt;
+
+
+#endif
