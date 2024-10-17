@@ -1,0 +1,89 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Screen {
+public:
+    void bankName() {
+        cout << "ALAHALY_BANK" << endl;
+    }
+
+    void welcome() {
+        cout << "WELCOME" << endl;
+    }
+
+    void loginOptions() {
+        cout << "IF YOU WANT TO REGISTER (1)" << endl;
+        cout << "IF YOU WANT TO LOGIN (2)" << endl;
+        cout << "ENTER YOUR NUMBER" << endl;
+
+        int x;
+        cin >> x;
+
+        if (x == 1) {
+            cout << "Enter your first name" << endl;
+            cout << "Enter your last name" << endl;
+        } else if (x == 2) {
+            cout << "Enter your email and password" << endl;
+        } else {
+            invalid();
+        }
+    }
+
+    int loginAs() {
+        cout << "IF YOU WANT TO LOGIN AS EMPLOYEE (1)" << endl;
+        cout << "IF YOU WANT TO LOGIN AS ADMIN (2)" << endl;
+        cout << "IF YOU WANT TO LOGIN AS CLIENT (3)" << endl;
+        cout << "ENTER YOUR NUMBER" << endl;
+
+        int y;
+        cin >> y;
+        return y;
+    }
+
+    void invalid() {
+        cout << "ERROR" << endl;
+        cout << "INVALID NUMBER" << endl;
+    }
+
+    void logout() {
+        system("clear"); 
+    }
+
+
+
+
+    static void loginScreen(int c) {
+        switch(c) {
+            case 1:
+                cout << "Admin Login Screen" << endl;
+                break;
+            case 2:
+                cout << "User Login Screen" << endl;
+                break;
+            default:
+                cout << "Guest Login Screen" << endl;
+        }
+    }
+
+    static void logout() {
+        cout << "Logging out..." << endl;
+    }
+
+    static void runApp() {
+        cout << "Running the application..." << endl;
+        int userType;
+        cout << "Enter user type (1 for Admin, 2 for User, 0 for Guest): ";
+        cin >> userType;
+        
+        loginScreen(userType);  
+
+       
+        cout << "Performing operations..." << endl;
+        logout();  // Log the user out at the end
+    }
+};
+
+
+};
