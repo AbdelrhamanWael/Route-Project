@@ -1,0 +1,64 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class AdminManager {
+public:
+    int id;
+    string name;
+    string password;
+    double balance;
+    class Client {
+    public:
+        int id;
+        string password;
+
+        Client(int clientId, const string& clientPassword) : id(clientId), password(clientPassword) {}
+    };
+
+    void printClientMenu() {
+        cout << id << endl;
+        cout << name << " " << password << " " << balance << endl;
+    }
+
+    void login(int ID, string Pass) {
+        if (id == ID && password == Pass) {
+            cout << "Login successful" << endl;
+        }
+    }
+    static Client* login(int id, const string& password) {
+
+        Client* client = new Client(id, password);
+
+
+        if (client->id == id && client->password == password) {
+            cout << "Login successful!" << endl;
+            return client;
+        }
+        else {
+            cout << "Invalid ID or password!" << endl;
+            delete client;
+            return nullptr;
+        }
+    }
+
+    static bool AdminOptions(Client* client) {
+        if (client == nullptr) {
+            cout << "Invalid client session!" << endl;
+            return false;
+        };
+        int main() {
+            AdminManger::printClientMenu();
+
+            int clientId = 123;
+            string password = "password123";
+            Client* client = AdminManager::login(clientId, password);
+
+            if (client != nullptr) {
+                AdminManager::AdminOptions(client);
+            }
+            delete client;
+
+            return 0;
+        }
+    }
+};
