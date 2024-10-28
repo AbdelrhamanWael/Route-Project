@@ -1,0 +1,11 @@
+#include "Client.h"
+
+Client::Client(string username, string password) : username(username), password(password) {}
+
+string Client::getUsername() const {
+    return username;
+}
+
+string Client::getPassword() const {
+    return password;
+}
