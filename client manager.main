@@ -1,0 +1,30 @@
+#include "ClientMAnager.h"
+#include<vector>
+#include <iostream>
+
+int main() {
+	
+	vector<Client*> clients;
+	clients.push_back(new Client(1, "Mariam Ahmed", " pass789"));
+	clients.push_back(new Client(2, "Ahmed Basel" , "pass090"));
+	
+	int id;
+	string password;
+
+	cout << "Enter ID";
+	cin >> id;
+	cout << "Enter passowrd ";
+	cin >> password;
+
+	Client* client = ClientManager::login(id, password, clients);
+	
+	if (client) {
+		ClientManager::clientOptions(client);
+		}
+	
+	for (Client* client : clients) {
+		delete client;
+	}
+	
+	return 0;
+}
