@@ -1,0 +1,66 @@
+#include "EmployeeManager.h"
+#include <iostream>
+#include <vector>
+
+void EmployeeManager::printClientMenu() {
+    cout << "Client Menu:" << endl;
+    cout << "1. New Client" << endl;
+    cout << "2. List All Clients" << endl;
+    cout << "3. Search for Client" << endl;
+    cout << "4. Edit Client Info" << endl;
+    cout << "5. Login" << endl;
+    cout << "6. Employee Options" << endl;
+    cout << "0. Exit" << endl;
+}
+
+void EmployeeManager::newClient(vector<Client>& clients) {
+    string username, password;
+    cout << "Enter username: ";
+    cin >> username;
+    cout << "Enter password: ";
+    cin >> password;
+    clients.emplace_back(username, password);
+    cout << "New client created." << endl;
+}
+
+void EmployeeManager::listAllClients(const vector<Client>& clients) {
+    cout << "Listing all clients:" << endl;
+    for (const auto& client : clients) {
+        cout << "Username: " << client.getUsername() << endl;
+    }
+}
+
+void EmployeeManager::searchForClient(const vector<Client>& clients) {
+    string username;
+    cout << "Enter username to search: ";
+    cin >> username;
+    for (const auto& client : clients) {
+        if (client.getUsername() == username) {
+            cout << "Client found: " << client.getUsername() << endl;
+            return;
+        }
+    }
+    cout << "Client not found." << endl;
+}
+
+void EmployeeManager::editClientInfo(vector<Client>& clients) {
+    string username;
+    cout << "Enter username to edit: ";
+    cin >> username;
+    for (auto& client : clients) {
+        if (client.getUsername() == username) {
+            string newPassword;
+            cout << "Enter new password: ";
+            cin >> newPassword;
+    
+            cout << "Client info updated." << endl;
+            return;
+        }
+    }
+    cout << "Client not found." << endl;
+}
+
+Client* EmployeeManager::login(int id, string password, const vector<Client>& clients) {
+    for (const auto& client : clients) {
+        if (client.getUsername() == to_string(id) && client.getPassword() == password) {
+           
