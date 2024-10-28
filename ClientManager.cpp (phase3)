@@ -1,0 +1,52 @@
+#include "ClientManager.h"
+#include <iostream>
+
+void ClientManager::printClientMenu() {
+	cout << "Client Menu :\n";
+	cout << "View details \n";
+	cout << "Update password \n";
+	cout << "Logout \n";
+}
+
+void ClientManager::updatePassword(Person* person) {
+	string newPassword;
+	cout << "Enter new password :";
+	cin >> newPassword;
+	person->setPassword(newPassword);
+	cout << "Password updated successfully \n";
+}
+
+Client* ClientManager::login(int id, const string& password, const vector<Client*>& clients) {
+	for (Client* client : clients) {
+		if (client->getId() == id && client->getPassword() == password) {
+			cout << "Login successful \n";
+			return client;
+		}
+	}
+	cout << "Invalid ID or password \n";
+	return nullptr;
+}
+
+bool ClientManager::clientOptions(Client* client) {
+	int choice; 
+	do {
+		printClientMenu();
+		cout << "Enter your choice: ";
+		cin >> choice;
+	
+	switch (choice) {
+	case 1:
+		client->displayClientDetails();
+		break;
+	case 2:
+		updatePassword(client);
+		break;
+	case 3:
+		cout << "Logging out..." << endl;
+		return false;
+	default:
+		cout << "Invalid option! Please try again." << endl;
+	}
+} while (choice != 3);
+	return true;
+}
