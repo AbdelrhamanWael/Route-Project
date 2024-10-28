@@ -1,0 +1,11 @@
+#include "Employee.h"
+
+Employee::Employee(string name, int id) : name(name), id(id) {}
+
+string Employee::getName() const {
+    return name;
+}
+
+int Employee::getId() const {
+    return id;
+}
