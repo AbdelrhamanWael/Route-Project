@@ -1,0 +1,15 @@
+#ifndef CLIENT_H
+#define CLIENT_H
+
+#include"Person.h"
+
+
+class Client : public Person {
+public: 
+	Client (int id, const string& name, const string& password);
+
+	void displayClientDetails() const;
+
+};
+
+#endif
