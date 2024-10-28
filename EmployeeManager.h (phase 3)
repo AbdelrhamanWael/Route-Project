@@ -1,0 +1,22 @@
+#ifndef EMPLOYEEMANAGER_H
+#define EMPLOYEEMANAGER_H
+
+#include <string>
+#include <vector>
+#include "Employee.h"
+#include "Client.h"
+
+using namespace std;
+
+class EmployeeManager {
+public:
+    static void printClientMenu();
+    static void newClient(vector<Client>& clients);
+    static void listAllClients(const vector<Client>& clients);
+    static void searchForClient(const vector<Client>& clients);
+    static void editClientInfo(vector<Client>& clients);
+    static Client* login(int id, string password, const vector<Client>& clients);
+    static bool employeeOptions(Client* client);
+};
+
+#endif 
